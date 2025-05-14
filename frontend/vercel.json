@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "public": true,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/angular-signup-verification-boilerplate"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(assets/.+)",
+      "headers": { "cache-control": "public, max-age=31536000, immutable" }
+    },
+    {
+      "src": "/(.+\\.[a-z0-9]{5}\\.(?:js|css))",
+      "headers": { "cache-control": "public, max-age=31536000, immutable" }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
